@@ -1,0 +1,446 @@
+/* CSS Variables for dynamic colors */
+:root {
+  --color-x: #e74c3c;
+  --color-o: #3498db;
+  --bg-primary: #2c3e50;
+  --bg-secondary: #34495e;
+  --text-primary: #ecf0f1;
+  --text-secondary: #bdc3c7;
+  --border-color: #7f8c8d;
+  --button-bg: #3498db;
+  --button-hover: #2980b9;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Controls Panel */
+.controls-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.control-group select,
+.control-group input[type="color"],
+.control-group input[type="range"] {
+  padding: 0.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.control-group select:focus,
+.control-group input:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.control-group input[type="color"] {
+  width: 60px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.control-group input[type="range"] {
+  cursor: pointer;
+}
+
+#volume-display {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.ai-controls {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ai-controls.hidden {
+  display: none;
+}
+
+.button-group {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--button-bg);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#mute-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#reset-scores {
+  background: var(--danger-color);
+}
+
+#reset-scores:hover {
+  background: #c0392b;
+}
+
+/* Status Section */
+.status-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#game-status {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#ai-thinking {
+  font-size: 1rem;
+  color: var(--warning-color);
+  font-style: italic;
+  min-height: 1.5rem;
+}
+
+/* Game Board */
+.board-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#game-board {
+  display: grid;
+  gap: 4px;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.board-cell {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  min-width: 60px;
+  min-height: 60px;
+}
+
+.board-cell:hover:not(.occupied) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-color: var(--button-bg);
+}
+
+.board-cell:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+  border-color: var(--button-bg);
+}
+
+.board-cell.occupied {
+  cursor: not-allowed;
+}
+
+.board-cell.x {
+  color: var(--color-x);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.board-cell.o {
+  color: var(--color-o);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.board-cell.winning {
+  background: var(--success-color);
+  animation: winPulse 1s ease-in-out infinite alternate;
+  border-color: var(--success-color);
+  box-shadow: 0 0 20px rgba(39, 174, 96, 0.5);
+}
+
+@keyframes winPulse {
+  from {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(39, 174, 96, 0.5);
+  }
+  to {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(39, 174, 96, 0.8);
+  }
+}
+
+/* Scoreboard */
+.scoreboard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scoreboard h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.scores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.score-item {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.score-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.score-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.score-item:nth-child(1) .score-value {
+  color: var(--color-x);
+}
+
+.score-item:nth-child(2) .score-value {
+  color: var(--color-o);
+}
+
+.score-item:nth-child(3) .score-value {
+  color: var(--warning-color);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .controls-panel {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .ai-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .board-cell {
+    font-size: 1.5rem;
+    min-width: 50px;
+    min-height: 50px;
+  }
+
+  .scores {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1rem 0.5rem;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .board-cell {
+    font-size: 1.2rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  #game-status {
+    font-size: 1.2rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #ffffff;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+  }
+
+  .board-cell {
+    border-width: 3px;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+.keyboard-nav .board-cell:focus {
+  outline: 3px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

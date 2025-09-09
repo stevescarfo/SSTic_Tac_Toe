@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>Tic-Tac-Toe</h1>
+      <p>
+        Choose your board size, game mode, and play! Use arrow keys and
+        Enter/Space for keyboard navigation.
+      </p>
+    </header>
+
+    <!-- Main Game Area -->
+    <main>
+      <!-- Controls Panel -->
+      <section class="controls-panel">
+        <div class="control-group">
+          <label for="board-size">Board Size:</label>
+          <select id="board-size" aria-label="Board size">
+            <option value="3">3x3</option>
+            <option value="4">4x4</option>
+            <option value="5">5x5</option>
+            <option value="6">6x6</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="game-mode">Game Mode:</label>
+          <select id="game-mode" aria-label="Game mode">
+            <option value="human-vs-human">Human vs Human</option>
+            <option value="human-vs-ai" selected>Human vs AI</option>
+          </select>
+        </div>
+
+        <div class="ai-controls" id="ai-controls">
+          <div class="control-group">
+            <label for="ai-plays-as">AI plays as:</label>
+            <select id="ai-plays-as" aria-label="AI plays as">
+              <option value="X">X</option>
+              <option value="O" selected>O</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="ai-difficulty">AI Difficulty:</label>
+            <select id="ai-difficulty" aria-label="AI difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="color-x">X Color:</label>
+          <input
+            type="color"
+            id="color-x"
+            value="#e74c3c"
+            aria-label="Color for X"
+          />
+        </div>
+
+        <div class="control-group">
+          <label for="color-o">O Color:</label>
+          <input
+            type="color"
+            id="color-o"
+            value="#3498db"
+            aria-label="Color for O"
+          />
+        </div>
+
+        <div class="control-group">
+          <label for="sound-theme">Sound Theme:</label>
+          <select id="sound-theme" aria-label="Sound theme">
+            <option value="classic" selected>Classic</option>
+            <option value="arcade">Arcade</option>
+            <option value="chime">Chime</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="volume">Volume:</label>
+          <input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Volume"
+          />
+          <span id="volume-display">50%</span>
+        </div>
+
+        <div class="control-group">
+          <button id="mute-toggle" type="button" aria-label="Toggle mute">
+            🔊
+          </button>
+        </div>
+
+        <div class="button-group">
+          <button id="new-game" type="button">New Game</button>
+          <button id="reset-scores" type="button">Reset Scores</button>
+        </div>
+      </section>
+
+      <!-- Game Status -->
+      <section class="status-section">
+        <div id="game-status" aria-live="polite">Player X's turn</div>
+        <div id="ai-thinking" aria-live="polite"></div>
+      </section>
+
+      <!-- Game Board -->
+      <section class="board-section">
+        <div
+          id="game-board"
+          role="grid"
+          aria-label="Tic-tac-toe game board"
+        ></div>
+      </section>
+
+      <!-- Scoreboard -->
+      <section class="scoreboard">
+        <h3>Scoreboard</h3>
+        <div class="scores">
+          <div class="score-item">
+            <span class="score-label">X Wins:</span>
+            <span id="score-x" class="score-value">0</span>
+          </div>
+          <div class="score-item">
+            <span class="score-label">O Wins:</span>
+            <span id="score-o" class="score-value">0</span>
+          </div>
+          <div class="score-item">
+            <span class="score-label">Draws:</span>
+            <span id="score-draws" class="score-value">0</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Tic-Tac-Toe Game</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
