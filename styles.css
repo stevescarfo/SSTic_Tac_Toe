@@ -209,7 +209,27 @@ button:active {
   min-height: 1.5rem;
 }
 
-/* Game Board */
+.music-indicator {
+  font-size: 1.5rem;
+  color: #ffff00;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: musicPulse 2s ease-in-out infinite;
+}
+
+.music-indicator.active {
+  opacity: 1;
+}
+
+@keyframes musicPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+} /* Game Board */
 .board-section {
   display: flex;
   justify-content: center;
@@ -223,6 +243,13 @@ button:active {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+#game-board.pacman-theme {
+  background: radial-gradient(circle, #000080, #000040);
+  border: 3px solid #ffff00;
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
 }
 
 .board-cell {
@@ -242,6 +269,47 @@ button:active {
   min-height: 60px;
 }
 
+.pacman-theme .board-cell {
+  background: rgba(0, 0, 139, 0.3);
+  border: 2px solid #4169e1;
+  border-radius: 50%;
+}
+
+.pacman-theme .board-cell:hover:not(.occupied) {
+  background: rgba(255, 255, 0, 0.2);
+  border-color: #ffff00;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+}
+
+.pacman-theme .board-cell.x {
+  background: radial-gradient(circle, var(--color-x), rgba(231, 76, 60, 0.3));
+  animation: pacmanPulse 2s ease-in-out infinite;
+}
+
+.pacman-theme .board-cell.o {
+  background: radial-gradient(circle, var(--color-o), rgba(52, 152, 219, 0.3));
+  animation: ghostFloat 3s ease-in-out infinite;
+}
+
+@keyframes pacmanPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes ghostFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
 .board-cell:hover:not(.occupied) {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);

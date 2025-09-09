@@ -82,10 +82,10 @@
           <select id="sound-theme" aria-label="Sound theme">
             <option value="classic" selected>Classic</option>
             <option value="arcade">Arcade</option>
+            <option value="pacman">Pac-Man</option>
             <option value="chime">Chime</option>
           </select>
         </div>
-
         <div class="control-group">
           <label for="volume">Volume:</label>
           <input
@@ -115,8 +115,8 @@
       <section class="status-section">
         <div id="game-status" aria-live="polite">Player X's turn</div>
         <div id="ai-thinking" aria-live="polite"></div>
+        <div id="music-indicator" class="music-indicator">♪</div>
       </section>
-
       <!-- Game Board -->
       <section class="board-section">
         <div
